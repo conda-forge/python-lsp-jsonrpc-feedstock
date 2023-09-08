@@ -12,14 +12,17 @@ source:
 build:
   noarch: python
   number: 0
-  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
+  script: python -m pip install . --no-deps --no-build-isolation -vv
 
 requirements:
   host:
-    - python >=3.6
+    - python >=3.8
     - pip
+    # Needed at build time to produce a package with the correct version for pip
+    # See https://github.com/pypa/setuptools_scm/issues/636#issuecomment-1026435048
+    - setuptools_scm >=3.4.3
   run:
-    - python >=3.6
+    - python >=3.8
     - ujson >=3.0.0
 
 test:
@@ -30,17 +33,22 @@ test:
     - pylsp_jsonrpc.dispatchers
   commands:
     - python -m pip check
+    # The pip version can be reported incorrectly if setuptools_scm isn't available
+    # at build time.
+    # Based on https://github.com/conda-forge/pyusb-feedstock/pull/4
+    - pip list | grep -i {{ name }} | grep {{ version }}
 
 about:
   home: https://github.com/python-lsp/python-lsp-jsonrpc
   license: MIT
   license_file: LICENSE
   license_family: MIT
-  summary: A Python 3.6+ server implementation of the JSON RPC 2.0 protocol.
+  summary: A Python 3.8+ server implementation of the JSON RPC 2.0 protocol.
   dev_url: https://github.com/python-lsp/python-lsp-jsonrpc
 
 extra:
   recipe-maintainers:
     - ccordoba12
+    - dalthviz
     - andfoy
     - steff456
