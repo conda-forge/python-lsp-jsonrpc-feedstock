@@ -7,7 +7,7 @@ Home: https://github.com/python-lsp/python-lsp-jsonrpc
 
 Package license: MIT
 
-Summary: A Python 3.6+ server implementation of the JSON RPC 2.0 protocol.
+Summary: A Python 3.8+ server implementation of the JSON RPC 2.0 protocol.
 
 Development: https://github.com/python-lsp/python-lsp-jsonrpc
 
@@ -147,5 +147,6 @@ Feedstock Maintainers
 
 * [@andfoy](https://github.com/andfoy/)
 * [@ccordoba12](https://github.com/ccordoba12/)
+* [@dalthviz](https://github.com/dalthviz/)
 * [@steff456](https://github.com/steff456/)
 
