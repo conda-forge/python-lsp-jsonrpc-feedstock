@@ -1,5 +1,5 @@
 {% set name = "python-lsp-jsonrpc" %}
-{% set version = "1.1.1" %}
+{% set version = "1.1.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 05cc914aa5ee2e7f52eb762014ba4996a8cc52459bfddb81fb96c56ace927908
+  sha256: 4688e453eef55cd952bff762c705cedefa12055c0aec17a06f595bcc002cc912
 
 build:
   noarch: python
