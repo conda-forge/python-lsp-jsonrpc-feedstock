@@ -18,6 +18,7 @@ requirements:
   host:
     - python {{ python_min }}
     - pip
+    - setuptools >=61.2.0
     # Needed at build time to produce a package with the correct version for pip
     # See https://github.com/pypa/setuptools_scm/issues/636#issuecomment-1026435048
     - setuptools_scm >=3.4.3
