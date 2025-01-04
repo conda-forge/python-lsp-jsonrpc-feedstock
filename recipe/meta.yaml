@@ -6,28 +6,30 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 4688e453eef55cd952bff762c705cedefa12055c0aec17a06f595bcc002cc912
 
 build:
   noarch: python
-  number: 0
+  number: 1
   script: python -m pip install . --no-deps --no-build-isolation -vv
 
 requirements:
   host:
-    - python >=3.8
+    - python {{ python_min }}
     - pip
+    - setuptools >=61.2.0
     # Needed at build time to produce a package with the correct version for pip
     # See https://github.com/pypa/setuptools_scm/issues/636#issuecomment-1026435048
     - setuptools_scm >=3.4.3
   run:
-    - python >=3.8
+    - python >={{ python_min }}
     - ujson >=3.0.0
 
 test:
   requires:
     - pip
+    - python {{ python_min }}
   imports:
     - pylsp_jsonrpc
     - pylsp_jsonrpc.dispatchers
